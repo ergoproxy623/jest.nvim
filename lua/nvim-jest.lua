@@ -83,7 +83,6 @@ function M.test_file_coverage()
   table.insert(args, " --runTestsByPath " .. c_file)
   table.insert(args, " --watch")
   table.insert(args, " --coverage")
-  table.insert(args, " --maxWorkers=25%")
 
   if config.silent then
     table.insert(args, " --silent")
