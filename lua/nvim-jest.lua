@@ -107,6 +107,7 @@ function M.test_single()
     table.insert(args, " --runTestsByPath " .. c_file)
     table.insert(args, " -t='" .. test_name .. "'")
     table.insert(args, " --watch")
+    table.insert(args, " --coverage")
     run_jest(args)
 
     focus_last_accessed_window()
