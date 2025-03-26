@@ -75,6 +75,25 @@ function M.test_file()
   focus_last_accessed_window()
 end
 
+function M.test_file_coverage()
+  local c_file = get_current_file_path()
+  create_window()
+
+  local args = {}
+  table.insert(args, " --runTestsByPath " .. c_file)
+  table.insert(args, " --watch")
+  table.insert(args, " --coverage")
+  table.insert(args, " --maxWorkers=25%")
+
+  if config.silent then
+    table.insert(args, " --silent")
+  end
+
+  run_jest(args)
+
+  focus_last_accessed_window()
+end
+
 function M.test_single()
   local c_file = get_current_file_path()
   local line = vim.api.nvim_get_current_line()
