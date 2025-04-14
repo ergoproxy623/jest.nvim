@@ -45,7 +45,7 @@ local function run_jest(args)
   end
 
   local jest_cmd = table.concat(cmd, " ")
-  vim.api.nvim_command(jest_cmd)
+  vim.api.nvim_command(quote_arg(jest_cmd))
 end
 
 function M.setup(user_data)
