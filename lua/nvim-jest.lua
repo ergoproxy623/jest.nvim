@@ -27,8 +27,16 @@ local function get_local_jest()
   return root_dir .. "/node_modules/jest/bin/jest.js"
 end
 
+local function quote_arg(arg)
+  -- Якщо є пробіли або спецсимволи — обгорнути в подвійні лапки
+  if string.find(arg, "[%s%-%(%)]") then
+    return '"' .. arg .. '"'
+  end
+  return arg
+end
+
 local function run_jest(args)
-  local cmd = { "terminal", config.jest_cmd }
+  local cmd = { "terminal",quote_arg(config.jest_cmd) }
 
   if args ~= nil then
     for _, v in ipairs(args) do
